@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board_sql">
+
+		<parameterMap type="hashmap" id="viewParam">
+				<parameter property="limit" mode="IN" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+				<parameter property="offset" mode="IN" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		</parameterMap>
+
+		<select id="listView" resultType="board.Board" parameterMap="viewParam">
+				CALL board_pro_view(?,?);
+		</select>
+
+		<parameterMap type="hashmap" id="insertParam">
+				<parameter property="title" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>
+				<parameter property="id_insert" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>
+				<parameter property="content" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>
+				<parameter property="file_name" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		</parameterMap>
+		
+		<insert id="listInsert" parameterMap="insertParam">
+				CALL board_pro_insert(?, ?, ?,?);
+		</insert>		
+		
+		<parameterMap type="hashmap" id="SelectParam">
+				<parameter property="no_board" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		</parameterMap>
+		<select id="listSelect" parameterMap="SelectParam" resultType="board.Board">
+						select
+						board.`NO`
+						,board.NO_BOARD
+						,board.TITLE
+						,board.CNT
+						,board.ID_INSERT
+						,board_dtl.CONTENT
+						,board_dtl.FILE_NAME
+						from board
+						left outer join board_dtl
+						on board.NO_BOARD = board_dtl.NO_BOARD
+						WHERE board.NO_BOARD=?
+		</select>
+		
+		<parameterMap type="hashmap" id="updateParam">
+				<parameter property="no_board" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>
+				<parameter property="title" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>
+				<parameter property="content" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		</parameterMap>
+		
+		<update id="listUpdate" parameterMap="updateParam">
+				CALL board_pro_update(?, ?, ?);
+		</update>
+
+		<parameterMap type="hashmap" id="deleteParam">
+				<parameter property="no_board" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		</parameterMap>
+		
+		<update id="listDelete" parameterMap="deleteParam">
+				CALL board_pro_delete(?);
+		</update>
+		
+</mapper>

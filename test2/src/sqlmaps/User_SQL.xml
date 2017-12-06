@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user_sql">
+		
+		
+		
+		<parameterMap type="hashmap" id="deleteParam">
+			<parameter property="user_id" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>			
+		</parameterMap>
+			
+		<update id="userDelete" parameterMap="deleteParam">
+			CALL user_pro_delete(?);
+		</update>
+
+		<parameterMap type="hashmap" id="updateParam">
+			<parameter property="user_id" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>			
+			<parameter property="user_pw" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>			
+			<parameter property="user_phone" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>			
+			<parameter property="user_regi_num" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>				
+		</parameterMap>
+
+		<update id="userUpdate" parameterMap="updateParam">
+			CALL user_pro_update(?,?,?,?);
+		</update>
+		
+		
+		<parameterMap type="hashmap" id="insertParam">
+			<parameter property="user_id" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>			
+			<parameter property="user_pw" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>			
+			<parameter property="user_phone" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>			
+			<parameter property="user_regi_num" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>					
+		</parameterMap>
+		
+		<insert id="userInsert" parameterMap="insertParam">
+			CALL user_pro_insert(?,?,?,?);
+		</insert>
+		
+		<parameterMap type="hashmap" id="selectParam">
+			<parameter property="user_id" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>								
+		</parameterMap>
+		<select id="userSelect" parameterMap="selectParam" resultType="user.User">
+			SELECT* FROM chood.user WHERE chood.user.user_id =?;
+		</select>
+		
+		
+		<parameterMap type="hashmap" id="viewParam">
+			<parameter property="limit" mode="IN" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+			<parameter property="offset" mode="IN" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		</parameterMap>
+		<select id="userListView" parameterMap="viewParam" resultType="user.User">
+			CALL user_pro_view(?,?);
+		</select>
+		
+		
+		<parameterMap type="hashmap" id="loginParam">
+			<parameter property="user_id" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>			
+			<parameter property="user_pw" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String"/>						
+		</parameterMap>
+		<select id="userLogin" parameterMap="loginParam" resultType="java.lang.Integer">
+			SELECT user_fnc_login(?,?);
+		</select>
+		
+</mapper>
