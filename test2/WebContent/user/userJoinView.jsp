@@ -33,7 +33,7 @@
 							</select>
 						</div>
 						<div class="col-sm-2">
-								<input type="button" value="중복체크" class="btn btn-default" ID="btnConfirm" onclick="user_idConfirm();">
+								<input type="button" value="중복체크" class="btn btn-default btn-block" ID="btnConfirm" onclick="user_idConfirm();">
 						</div>
 				</div>	
 				

@@ -26,17 +26,10 @@ public class userInsertAction implements CommandAction{
 		param.put("user_id", user_id+user_id_2);
 		param.put("user_pw", user_pw);
 		param.put("user_phone", user_phone_first+user_phone);
-		param.put("user_regi_num", user_regi_num);
-		
+		param.put("user_regi_num", user_regi_num);		
 		result = UserDAO.getInstance().userInsert(param);
-		
-		System.out.println(user_id+user_id_2);
-		System.out.println(user_pw);
-		System.out.println(user_phone_first+user_phone);
-		System.out.println(user_regi_num);
-		System.out.println(result);
-		
-		return "userListView.do?page=1";
+		System.out.println(result);		
+		return "userLogin.jsp";
 	}
 
 }

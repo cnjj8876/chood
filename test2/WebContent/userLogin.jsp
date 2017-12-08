@@ -27,7 +27,7 @@
 		   		</div>
 		   		<button class="btn btn-lg btn-default btn-block" type="submit">Sign in</button>
 		 </form>
-		<button class="btn btn-lg btn-default btn-block" type="button" onclick=btn_join_click();>join in</button>
+		<button class="btn btn-lg btn-default btn-block btn-sm" type="button" onclick=btn_join_click();>join in</button>
     </div>
     
 <jsp:include page="footer.jsp" flush="false"></jsp:include>
