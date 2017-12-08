@@ -146,6 +146,7 @@ function user_idConfirm(){
 			if(result==0){
 				document.getElementById("btnConfirm").className="btn btn-success";
 				alert("사용가능한 ID 입니다");
+				userIDConfirm=true;
 			}
 			else{
 				document.getElementById("btnConfirm").className="btn btn-warning";
@@ -157,6 +158,16 @@ function user_idConfirm(){
 
 
 function formGroupIdSubmit(){
+	var result = dataCheck();
+	
+	if(result){
+		document.joinForm.submit();
+	}
+}
+
+
+
+function dataCheck(){
 	var user_id = document.joinForm.user_id;
 	var user_id_2 = document.joinForm.user_id_2;
 	var user_pw = document.joinForm.user_pw;
@@ -166,13 +177,20 @@ function formGroupIdSubmit(){
 
   	if(user_id.value==""){
   		document.getElementById("idGroup").className="form-group has-error";
+  		return false;
   	}
   	else{
   		document.getElementById("idGroup").className="form-group has-success";
 	}
   	
+  	if(!userIDConfirm){
+  		alert("ID중복여부 확인 바랍니다.");
+  		return false;
+  	}
+  	
   	if(!userPassConfirm){
   		document.getElementById("passGroup").className="form-group has-error";	
+  		return false;
   	}
   	else{
   		document.getElementById("passGroup").className="form-group has-success";	
@@ -182,11 +200,13 @@ function formGroupIdSubmit(){
   		document.getElementById("passGroupConfirm").className="form-group has-success";
   	}
   	else{
-  		document.getElementById("passGroupConfirm").className="form-group has-error";		
+  		document.getElementById("passGroupConfirm").className="form-group has-error";
+  		return false;
   	}
   	  	
   	if(user_phone.value.length<8){
   		document.getElementById("phoneGroup").className="form-group has-error";
+  		return false;
   	}
   	else{
   		document.getElementById("phoneGroup").className="form-group has-success";
@@ -194,10 +214,13 @@ function formGroupIdSubmit(){
   	
   	if(user_regi_num.value.length<8){
   		document.getElementById("regiNumGroup").className="form-group has-error";
+  		return false;
   	}
   	else{
   		document.getElementById("regiNumGroup").className="form-group has-success";
   	}
+  	
+  	return true;
 }
 
 </script>
