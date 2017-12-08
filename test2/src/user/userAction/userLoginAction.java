@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import common.controller.CommandAction;
 import user.userDAO.UserDAO;
@@ -26,6 +27,9 @@ public class userLoginAction implements CommandAction{
 		if(result!=1) {
 			return "userLogin.jsp";
 		}
+		HttpSession session = request.getSession();
+		session.setAttribute("user_id",user_id);
+		
 		return "listView.do?page=1";
 	}
 
