@@ -15,8 +15,6 @@ public class userLoginAction implements CommandAction{
 		String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
 		
-		System.out.println(user_id);
-		
 		HashMap<String, String> param =new  HashMap<String, String>();
 		param.put("user_id", user_id);
 		param.put("user_pw", user_pw);

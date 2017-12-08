@@ -102,13 +102,11 @@ public class UserDAO extends CommonDAO implements UserDAOlmp{
 		SqlSession session = getDatabase().openSession();
 		int result=0;
 		try {
-			if(result==1) {
-				session.commit();
-			}
+			result = session.selectOne("user_sql.userIdConfirm", param);
 		}finally {
 			session.close();
 		}
-		return 0;
+		return result;
 	}
 
 }
