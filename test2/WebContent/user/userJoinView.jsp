@@ -16,8 +16,8 @@
 
 <jsp:include page="../main.jsp" flush="false"></jsp:include>
 
-    <div class="container">
-		<form action="../userInsert.do" method="post" class="form-horizontal" name="joinForm">
+    <div class="container col-lg-8 col-lg-offset-2">  
+    <form action="../userInsert.do" method="post" class="form-horizontal" name="joinForm">
 				<div class="form-group" id="idGroup">
 						<label class="col-sm-2 control-label">ID</label>
 						<div class="col-sm-4">
@@ -80,8 +80,8 @@
 				</div>
 				
 				<div class="form-group">
-						<div class = "col-sm-12">
-								<input type="button" value="전송" class="form-control" onclick="formGroupIdSubmit();">
+						<div class = "col-sm-10">
+								<input type="button" value="전송" class="form-control btn-default" onclick="formGroupIdSubmit();">
 						</div>	
 				</div>
 		</form>
@@ -92,7 +92,7 @@
 			<br>phone	<input type="text" name="user_phone">
 			<br>regi_num	<input type="text" name="user_regi_num">
 			<br><input type="submit" value="전송"> -->
-    </div>
+    </div>	
     
 <jsp:include page="../footer.jsp" flush="false"></jsp:include>
 
@@ -144,13 +144,13 @@ function user_idConfirm(){
 		success:function(data){
 			var result=data.trim();
 			if(result==0){
-				document.getElementById("btnConfirm").className="btn btn-success";
-				alert("사용가능한 ID 입니다");
+				document.getElementById("btnConfirm").className="form-control btn btn-success";
+				document.getElementById("btnConfirm").value="사용가능한 ID 입니다"
 				userIDConfirm=true;
 			}
 			else{
-				document.getElementById("btnConfirm").className="btn btn-warning";
-				alert("이미 존재하는 ID 입니다");				
+				document.getElementById("btnConfirm").className="form-control btn btn-warning";
+				document.getElementById("btnConfirm").value="이미 존재하는 ID 입니다"		
 			}
 		}
 	});

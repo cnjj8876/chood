@@ -19,7 +19,7 @@
 
 <div class="container" align="center">
 
-<table class="table table-hover">
+<%-- <table class="table table-hover">
 		<tr>
 				<th scope="col">번호</th>
 				<th scope="col">코드</th>
@@ -38,7 +38,24 @@
 			<td>${board.cnt}</td>
 		</tr>
 </c:forEach>
-</table>
+</table> --%>
+
+
+<c:forEach items="${listBoard}" var= "board"  >
+		<hr class="featurette-divider">
+		
+		<div class="row featurette">
+				<div class="col-md-7">
+						<h2 class="featurette-heading"><a href="/test2/listSelect.do?no_board=${board.no_board}&page=${paging.currPage}">${board.title}</a><span class="text-muted">${board.id_insert}</span></h2>
+						<p class="lead">${board.dts_insert}</p>
+				</div>
+				<div class="col-md-5">
+						<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+				</div>
+		</div>
+</c:forEach>
+
+
 
 <br> <label onclick="lableClick();">글쓰기</label>
 
