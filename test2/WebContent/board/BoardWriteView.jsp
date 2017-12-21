@@ -15,8 +15,9 @@
 <div class="container" align="center">
 <form action="/test2/listInsert.do" enctype="multipart/form-data" method="post">
 	<br>제목:<input type="text" id="title" name="title">
-	<br>작성자:<input type="text" id="id_insert" name="id_insert">
-	<br>내용:<input type="text" id="content" name="content">
+	<br>작성자:<input type="text" id="id_insert" name="id_insert" value="${sessionScope.user_id}">
+	<!-- <br>내용:<input type="text" id="content" name="content"> -->
+	<br>내용: <textarea rows="10" cols="30" id="content" name="content"></textarea>
 	<br>파일:<input type="file" name="fileName">
 	<br><input type="submit" value="전송" id="btn_submit1">
 </form>

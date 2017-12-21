@@ -19,28 +19,6 @@
 
 <div class="container" align="center">
 
-<%-- <table class="table table-hover">
-		<tr>
-				<th scope="col">번호</th>
-				<th scope="col">코드</th>
-				<th scope="col">제목</th>
-				<th scope="col">작성자</th>
-				<th scope="col">날짜</th>
-				<th scope="col">조회수</th>	
-		</tr>
-<c:forEach items="${listBoard}" var= "board"  >
-		<tr>
-			<th>${board.no}</th>
-			<td>${board.no_board}</td>
-			<td><a href="/test2/listSelect.do?no_board=${board.no_board}&page=${paging.currPage}">${board.title}</a></td>
-			<td>${board.id_insert}</td>
-			<td>${board.dts_insert}</td>
-			<td>${board.cnt}</td>
-		</tr>
-</c:forEach>
-</table> --%>
-
-
 <c:forEach items="${listBoard}" var= "board"  >
 		<hr class="featurette-divider">
 		
@@ -50,7 +28,7 @@
 						<p class="lead">${board.dts_insert}</p>
 				</div>
 				<div class="col-md-5">
-						<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+						<img class="featurette-image img-responsive center-block" data-src="${board.file_path}/${board.file_name}" alt="Generic placeholder image">
 				</div>
 		</div>
 </c:forEach>
